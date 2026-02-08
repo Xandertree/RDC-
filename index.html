@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ride or Die Deal Finder</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">ROD</div>
+      <div>
+        <div class="title">Deal Finder</div>
+        <div class="subtitle">Clean Title + Normal Wear • CA • ≤ 50% of FMV</div>
+      </div>
+    </div>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <h2>Filters</h2>
+
+      <div class="grid">
+        <label>
+          Source
+          <select id="source">
+            <option value="Both" selected>Copart + IAAI</option>
+            <option value="Copart">Copart</option>
+            <option value="IAAI">IAAI</option>
+          </select>
+        </label>
+
+        <label>
+          State
+          <select id="state">
+            <option value="CA" selected>California (CA)</option>
+            <option value="ALL">All</option>
+          </select>
+        </label>
+
+        <label>
+          Deal % max
+          <input id="dealMax" type="number" min="1" max="100" value="50" />
+        </label>
+
+        <label>
+          Max price
+          <input id="priceMax" type="number" min="0" placeholder="No limit" />
+        </label>
+
+        <label>
+          Max miles
+          <input id="milesMax" type="number" min="0" placeholder="No limit" />
+        </label>
+
+        <label>
+          Search
+          <input id="q" type="search" placeholder="e.g., Camry, Civic, 2018 Toyota" />
+        </label>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle">
+          <input id="cleanTitleOnly" type="checkbox" checked />
+          <span>Clean title only</span>
+        </label>
+
+        <label class="toggle">
+          <input id="normalWearOnly" type="checkbox" checked />
+          <span>Normal wear only</span>
+        </label>
+
+        <label class="toggle">
+          <input id="includeFeesAndTransport" type="checkbox" checked />
+          <span>Use fees + $500 transport in deal%</span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="reset">Reset</button>
+        <button class="primary" id="refresh">Refresh</button>
+      </div>
+
+      <div class="note">
+        <strong>Note:</strong> This MVP reads from <code>data/sample_listings.json</code>.
+        Replace that file (or wire an API endpoint) to show real auction inventory.
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="results-head">
+        <h2>Matches</h2>
+        <div id="count"></div>
+      </div>
+      <div id="cards" class="cards"></div>
+      <div class="footnote">
+        “Normal Wear” is commonly used on auction lots to indicate no major external damage, but auctions don’t guarantee condition.
+        Always verify photos/history/inspection before bidding.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© Ride or Die Customs — Deal Finder MVP</div>
+    <div class="small">Built to embed via iframe.</div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
